@@ -6,4 +6,9 @@ require_once('database.php');
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
+    // Define the User class
+    class User {
+      
+    }
 ?>
