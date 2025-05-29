@@ -1,9 +1,19 @@
 <?php
-define('DB_HOST',         'dvmmh.h.filess.io');
-define('DB_USER',         'cosc4806_badlyearth'); 
-define('DB_PASS',         $_ENV['DB_PASS']);
-define('DB_DATABASE',     'cosc4806_badlyearth');
-define('DB_PORT',         '61000');
 
+// estable and handle secure connection to the MySQL database using PDO.
 
+require_once('config.php');
+
+function db_connect() {
+  try {
+    $dbh = new PDO(
+      'mysql:host=' . DB_HOST . ';port=' . DB_PORT . ';dbname=' . DB_DATABASE,
+      DB_USER,
+      DB_PASS
+    );
+    return $dbh;
+  } catch (PDOException $e) {
+    throw new Exception("DB connection failed: " . $e->getMessage());
+  }
+}
 ?>
