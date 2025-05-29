@@ -1,13 +1,11 @@
-<?php
-// login.php
-session_start();
-?>
+    <?php
+    // Include user handling class and start session
+    require_once('user.php'); 
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login</title>
-</head>
-<body>
+    // Start session if it's not already active
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
-<h1>Login Page</h1>
+    $error = ""; 
+    ?>
