@@ -26,6 +26,17 @@ if (session_status() == PHP_SESSION_NONE) {
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }
 
+        // Add method to create new user with hashed password
+        public function create_user($name, $username, $password) {
+            $db = db_connect();
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);             // Securely hash password
+            $stmt = $db->prepare("INSERT INTO users (name, username, password) VALUES (:name, :username, :password)");
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':password', $hashed_password);
+            return $stmt->execute();
+        }
+
         
       
     }
