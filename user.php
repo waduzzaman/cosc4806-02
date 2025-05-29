@@ -17,6 +17,14 @@ if (session_status() == PHP_SESSION_NONE) {
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+        // Add method to get a user by username
+        public function get_user_by_username($username) {
+            $db = db_connect();
+            $stmt = $db->prepare("SELECT * FROM users WHERE username = :username");
+            $stmt->bindParam(':username', $username);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
 
         
       
