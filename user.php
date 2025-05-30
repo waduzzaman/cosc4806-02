@@ -8,8 +8,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
     // Define the User class
-    class User {
-        
+    class User {        
         // Add method to retrieve all users
         public function get_all_users() {
             $db = db_connect();
@@ -29,15 +28,14 @@ if (session_status() == PHP_SESSION_NONE) {
         // Add method to create new user with hashed password
         public function create_user($name, $username, $password) {
             $db = db_connect();
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);             // Securely hash password
+            // Securely hash password
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);             
             $stmt = $db->prepare("INSERT INTO users (name, username, password) VALUES (:name, :username, :password)");
             $stmt->bindParam(':name', $name);
             $stmt->bindParam(':username', $username);
             $stmt->bindParam(':password', $hashed_password);
             return $stmt->execute();
-        }
-
-        
+        }       
       
     }
 ?>

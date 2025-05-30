@@ -2,8 +2,6 @@
 
 // estable and handle secure connection to the MySQL database using PDO.
 
-require_once('config.php');
-
 function db_connect() {
   try {
     $dbh = new PDO(
