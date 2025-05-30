@@ -47,3 +47,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
+  <!DOCTYPE html>
+  <html>
+  <head><title>Register</title></head>
+  <body>
+  <h2>Register</h2>
+
+  <?php
+  // Display error messages if any
+  foreach ($errors as $error) {
+      echo "<p style='color:red;'>❌ $error</p>";
+  }
+  ?>
+
+  <!-- Registration Form -->
+  <form method="POST" action="">
+    <label>Name: <input type="text" name="name" required></label><br><br>
+    <label>Username: <input type="text" name="username" required></label><br><br>
+    <label>Password: <input type="password" name="password" required></label><br><br>
+    <label>Confirm Password: <input type="password" name="confirm_password" required></label><br><br>
+    <input type="submit" value="Register">
+  </form>
+
+  <p>Already have an account? <a href="login.php">Login here</a></p>
+  </body>
+  </html>
+
+
